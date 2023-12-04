@@ -13,7 +13,7 @@
     "allowJs": true,
     "moduleResolution": "node",
     //Для абсолютного импорта
-    "baseUrl": ".",
+    // "baseUrl": ".",
     //если какая-либо библиотека не имеет default import, лоадеры вроде ts-loader создают их (import without *)
     "allowSyntheticDefaultImports": true,
     //esModuleInterop позволяет работать с пакетами, использующими common js как обычными пакетами с ESM
