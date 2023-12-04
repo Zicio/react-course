@@ -8,7 +8,7 @@
     "module": "ESNext",
     //версия js, в которую компилируется исходный код (обычно используют es5 или es6)
     "target": "es5",
-    "jsx": "react",
+    "jsx": "react-jsx",
     //Компиллятор обрабатывает также и js файлы
     "allowJs": true,
     "moduleResolution": "node",
