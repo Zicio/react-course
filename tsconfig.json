@@ -1,11 +1,25 @@
 {
   "compilerOptions": {
+    //Путь, куда производится компиляция (в данном случае неважна, т.к. сборку осуществляет Webpack)
     "outDir": "./dist/",
+    //Запрет использования неявных переменных без явного указания типа (при этом явно указывать any можно)
     "noImplicitAny": true,
-    "module": "es6",
+    //разные виды модульной сборки (обычно используют ESNext или es6)
+    "module": "ESNext",
+    //версия js, в которую компилируется исходный код (обычно используют es5 или es6)
     "target": "es5",
     "jsx": "react",
+    //Компиллятор обрабатывает также и js файлы
     "allowJs": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    //если какая-либо библиотека не имеет default import, лоадеры вроде ts-loader создают их (import without *)
+    "allowSyntheticDefaultImports": true,
+    //esModuleInterop позволяет работать с пакетами, использующими common js как обычными пакетами с ESM
+    "esModuleInterop": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   }
 }
