@@ -1,4 +1,4 @@
-import "./index.scss";
+import "./styles/index.scss";
 import { Link, Route, Routes } from "react-router-dom";
 import { MainPageAsync } from "./pages/MainPage/MainPage.async";
 import { AboutPageAsync } from "./pages/AboutPage/AboutPage.async";
