@@ -10,6 +10,7 @@ const App = () => {
   const { theme } = useTheme();
   return (
     <div className={classNames("app", {}, [theme])}>
+      {/* Suspense для асинхронной работы i18n (перевода текста на разные языки) */}
       <Suspense fallback="">
         <Navbar />
         <div className="content-page">

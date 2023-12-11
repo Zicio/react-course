@@ -8,7 +8,9 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: "en",
+    // Язык по ключу по-умолчанию
+    fallbackLng: "ru",
+    // Включение сообщений i18n в консоль
     debug: __IS_DEV__,
 
     interpolation: {

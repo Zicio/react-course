@@ -16,6 +16,7 @@ export function buildPlugins({
       filename: "css/[name].[contenthash:8].css",
       chunkFilename: "css/[name].[contenthash:8].css",
     }),
+    // DefinePlugin для использования переменных webpack в модулях
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
     }),
