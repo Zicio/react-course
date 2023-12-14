@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["standard-with-typescript", "plugin:react/recommended"],
+  extends: ["standard-with-typescript", "plugin:react/recommended", "plugin:i18next/recommended"],
   overrides: [
     {
       env: {
@@ -19,7 +19,7 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react"],
+  plugins: ["react", "i18next"],
   rules: {
     "react/jsx-indent": [2, 2],
     indent: [2, 2],
@@ -29,6 +29,7 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/ban-ts-comment": "warn",
     "@typescript-eslint/no-floating-promises": "off",
-    "@typescript-eslint/naming-convention": "warn"
+    "@typescript-eslint/naming-convention": "warn",
+    "i18next/no-literal-string": ['error', {markupOnly: true}]
   }
 };

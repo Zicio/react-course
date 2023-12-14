@@ -1,0 +1,9 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "no-missing-end-of-source-newline": null,
+    "color-function-notation": null,
+    "custom-property-empty-line-before": null,
+    "selector-class-pattern": null
+  }
+}
