@@ -1,12 +1,23 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import type webpack from 'webpack'
-import { type BuildOptions } from './types/config'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import type webpack from 'webpack';
+import { type BuildOptions } from './types/config';
 
 export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] {
   const svgLoader = {
     test: /\.svg$/,
     use: ['@svgr/webpack']
-  }
+  };
+
+  const babelLoader = {
+    test: /\.(js|jsx|tsx)$/,
+    exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env']
+      }
+    }
+  };
 
   const fileLoader = {
     test: /\.(png|jpe?g|gif)$/i,
@@ -15,7 +26,7 @@ export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] {
         loader: 'file-loader'
       }
     ]
-  }
+  };
 
   const cssLoader = {
     test: /\.s[ac]ss$/i,
@@ -37,13 +48,13 @@ export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] {
       // Compiles Sass to CSS
       'sass-loader'
     ]
-  }
+  };
 
   // Если не используем ts - нужен babel-loader
   const typescriptLoader = {
     test: /\.tsx?$/,
     use: 'ts-loader',
     exclude: /node_modules/
-  }
-  return [fileLoader, svgLoader, typescriptLoader, cssLoader]
+  };
+  return [fileLoader, svgLoader, babelLoader, typescriptLoader, cssLoader];
 }

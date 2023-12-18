@@ -7,7 +7,9 @@ module.exports = {
   overrides: [
     {
       env: {
-        node: true,
+        browser: true,
+        es2021: true,
+        jest: true,
       },
       files: [".eslintrc.{js,cjs}"],
       parserOptions: {
@@ -23,13 +25,16 @@ module.exports = {
   rules: {
     "react/jsx-indent": [2, 2],
     indent: [2, 2],
+    "semi": ['error', 'always'],
+    "@typescript-eslint/semi": ['error', 'always'],
     "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/strict-boolean-expressions": "warn",
-    "@typescript-eslint/prefer-nullish-coalescing": "warn",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/ban-ts-comment": "warn",
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/naming-convention": "warn",
-    "i18next/no-literal-string": ['error', {markupOnly: true}]
+    "i18next/no-literal-string": ['error', {markupOnly: true}],
+    "max-len": ["error", {code: 120, ignoreComments: true}]
   }
 };
