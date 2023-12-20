@@ -1,6 +1,8 @@
 {
   "extends": "stylelint-config-standard-scss",
+  "plugins": ["stylelint-order"],
   "rules": {
+    "order/properties-order": ["display", "box-sizing", "width", "height", "position", "z-index", "top", "right", "bottom", "left"],
     "no-missing-end-of-source-newline": null,
     "color-function-notation": null,
     "custom-property-empty-line-before": null,
