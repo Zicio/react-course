@@ -19,9 +19,7 @@ export default {
   coveragePathIgnorePatterns: [
     '\\\\node_modules\\\\'
   ],
-  moduleDirectories: [
-    'node_modules'
-  ],
+
   moduleFileExtensions: [
     'js',
     'jsx',
@@ -30,11 +28,21 @@ export default {
     'json',
     'node'
   ],
+  moduleDirectories: [
+    'node_modules'
+  ],
+  modulePaths: [
+    '<rootDir>src',
+],
   rootDir: '../../',
   testMatch: [
     '**/__tests__/**/*.[jt]s?(x)',
     '**/?(*.)+(spec|test).[tj]s?(x)'
-  ]
+  ],
+  setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
+  moduleNameMapper: {
+    '\\.s?css$': 'identity-obj-proxy',
+  },
   // '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'
 
   // Indicates whether the coverage information should be collected while executing the test
