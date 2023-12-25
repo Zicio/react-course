@@ -4,19 +4,6 @@ module.exports = {
     es2021: true,
   },
   extends: ["standard-with-typescript", "plugin:react/recommended", "plugin:i18next/recommended"],
-  overrides: [
-    {
-      env: {
-        browser: true,
-        es2021: true,
-        jest: true,
-      },
-      files: [".eslintrc.{js,cjs}"],
-      parserOptions: {
-        sourceType: "script",
-      },
-    },
-  ],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
@@ -34,7 +21,18 @@ module.exports = {
     "@typescript-eslint/ban-ts-comment": "warn",
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/naming-convention": "warn",
-    "i18next/no-literal-string": ['error', {markupOnly: true}],
-    "max-len": ["error", {code: 120, ignoreComments: true}]
-  }
+    "i18next/no-literal-string": ['error', {markupOnly: true, ignoreAttribute: ['data-testid']}],
+    "max-len": ["error", {code: 100, ignoreComments: true}]
+  },
+  globals: {
+    __IS_DEV__: true,
+  },
+  overrides: [
+    {
+      files: ['**/src/**/*.test.{ts,tsx}'],
+      rules: {
+        'i18next/no-literal-string': 'off',
+      },
+    },
+  ],
 };
