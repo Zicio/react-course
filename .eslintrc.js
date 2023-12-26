@@ -3,7 +3,12 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["standard-with-typescript", "plugin:react/recommended", "plugin:i18next/recommended"],
+  extends: [
+    "standard-with-typescript",
+    "plugin:react/recommended",
+    "plugin:i18next/recommended",
+    "plugin:storybook/recommended"
+  ],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
@@ -21,7 +26,7 @@ module.exports = {
     "@typescript-eslint/ban-ts-comment": "warn",
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/naming-convention": "warn",
-    "i18next/no-literal-string": ['error', {markupOnly: true, ignoreAttribute: ['data-testid']}],
+    "i18next/no-literal-string": ['error', {markupOnly: true, ignoreAttribute: ['data-testid', 'to']}],
     "max-len": ["error", {code: 100, ignoreComments: true}]
   },
   globals: {
