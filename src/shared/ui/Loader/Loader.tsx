@@ -6,5 +6,5 @@ interface LoaderProps {
 }
 
 export const Loader = ({ className }: LoaderProps) => (
-    <span className={classNames(cls.Loader, {}, [className])} />
+  <span className={classNames(cls.Loader, {}, [className])} />
 );
