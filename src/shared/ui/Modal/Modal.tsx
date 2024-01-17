@@ -20,7 +20,7 @@ export const Modal = ({
 }: ModalProps) => {
   const [isClothing, setIsClothing] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
-  // const { theme } = useTheme();
+  const { theme } = useTheme();
 
   const closeHandler = useCallback(() => {
     if (onClose) {
@@ -57,15 +57,15 @@ export const Modal = ({
     [cls.isClosing]: isClothing,
   };
   return (
-    // <Portal>
-    <div className={classNames(cls.Modal, mods, [className])}>
-      <div className={cls.overlay} onClick={closeHandler}>
-        <div className={cls.content} onClick={onContentClick}>
-          {children}
+    <Portal>
+      <div className={classNames(cls.Modal, mods, [className, theme])}>
+        <div className={cls.overlay} onClick={closeHandler}>
+          <div className={cls.content} onClick={onContentClick}>
+            {children}
+          </div>
         </div>
       </div>
-    </div>
-    // </Portal>
+    </Portal>
 
   );
 };
