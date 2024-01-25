@@ -59,6 +59,7 @@ export const Input = memo((props: InputProps) => {
       {placeholder && (<div className={cls.placeholder}>{`${placeholder}>`}</div>)}
       <div className={cls.carriageWrapper}>
         <input
+          data-testid="input"
           ref={ref}
           type={type}
           value={value}
