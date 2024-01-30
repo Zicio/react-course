@@ -29,8 +29,10 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
     dispatch(loginActions.setPassword(value));
   }, [dispatch]);
 
+  const onLoginSubmit = useCallback(() => {}, []);
+
   return (
-    <form className={classNames(cls.LoginForm, {}, [className])}>
+    <form className={classNames(cls.LoginForm, {}, [className])} onSubmit={onLoginSubmit}>
       <Input
         type="text"
         className={cls.input}

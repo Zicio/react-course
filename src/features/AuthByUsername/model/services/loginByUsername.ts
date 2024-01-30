@@ -1,13 +1,24 @@
-// import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { User } from 'entities/User';
 
-// export const fetchPokemonByName = createAsyncThunk<Pokemon, string>(
-//   'login/loginByUsername',
-//   async (name, { rejectWithValue }) => {
-//     const response = await fetch(`https://localhost:8000`);
-//     const data = await response.json();
-//     if (response.status < 200 || response.status >= 300) {
-//       return rejectWithValue(data);
-//     }
-//     return data;
-//   },
-// ); // TODO
+interface LoginByUsernameProps {
+  username: string;
+  password: string
+}
+
+export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, {rejectValue: string}>(
+  'login/loginByUsername',
+  async (authData, { rejectWithValue }) => {
+    try {
+      const response = await axios.post<User>('http://localhost:8000/login', authData);
+      if (response.data) {
+        throw new Error();
+      }
+      return response.data;
+    } catch (e) {
+      console.log(e);
+      return rejectWithValue('error');
+    }
+  },
+);
