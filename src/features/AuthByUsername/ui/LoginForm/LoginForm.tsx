@@ -5,6 +5,7 @@ import { Input } from 'shared/ui/Input/Input';
 import { useDispatch, useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState/getLoginState';
+import { loginByUsername } from '../../model/services/loginByUsername';
 import { loginActions } from '../../model/slice/loginSlice';
 import cls from './LoginForm.module.scss';
 
@@ -29,10 +30,14 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
     dispatch(loginActions.setPassword(value));
   }, [dispatch]);
 
-  const onLoginSubmit = useCallback(() => {}, []);
+  const onLoginSubmit = useCallback((e) => {
+    e.preventDefault();
+    dispatch(loginByUsername({ username, password }));
+  }, [dispatch, password, username]);
 
   return (
-    <form className={classNames(cls.LoginForm, {}, [className])} onSubmit={onLoginSubmit}>
+    <form id="login" className={classNames(cls.LoginForm, {}, [className])} onSubmit={onLoginSubmit}>
+      {error && <div>{error}</div>}
       <Input
         type="text"
         className={cls.input}
@@ -48,7 +53,7 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
         onChange={onChangePassword}
         value={password}
       />
-      <Button className={cls.loginBtn} theme={ButtonTheme.OUTLINE}>
+      <Button className={cls.loginBtn} theme={ButtonTheme.OUTLINE} form="login" type="submit" disabled={isLoading}>
         {t('Войти')}
       </Button>
     </form>
