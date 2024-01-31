@@ -13,6 +13,9 @@
   "О сайте": "About us",
   "Переключить": "Toggle",
   "Войти": "SignIn",
+  "Выйти": "SignOut",
   "инкремент": "increment",
-  "декремент": "decrement"
+  "декремент": "decrement",
+  "Форма авторизации": "Authorization form",
+  "ошибка авторизации": "Incorrect username / password"
 }

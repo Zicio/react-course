@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -92,4 +91,11 @@ OutlineSizeXL.args = {
   children: 'Text',
   theme: ButtonTheme.OUTLINE,
   size: ButtonSize.XL,
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  children: 'Text',
+  theme: ButtonTheme.BACKGROUND_INVERTED,
+  disabled: true,
 };
