@@ -6,7 +6,6 @@ const MainPage = memo(() => {
   return (
     <div>
       {t('Главная страница')}
-      {/* <Counter /> */}
     </div>
   );
 });

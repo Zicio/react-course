@@ -1,6 +1,6 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import {
-  MouseEvent, ReactNode, useCallback, useEffect, useRef, useState,
+  MouseEvent, MutableRefObject, ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
 import cls from './Modal.module.scss';
 import { Portal } from '../Portal/Portal';
@@ -20,7 +20,7 @@ export const Modal = ({
 }: ModalProps) => {
   const [isClothing, setIsClothing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
 
   useEffect(() => {
     if (isOpen) {
@@ -58,7 +58,7 @@ export const Modal = ({
     e.stopPropagation();
   };
 
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [cls.opened]: isOpen,
     [cls.isClosing]: isClothing,
   };

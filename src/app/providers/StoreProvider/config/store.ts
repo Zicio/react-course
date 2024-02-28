@@ -3,7 +3,7 @@ import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/api';
 import { To, NavigateOptions } from 'react-router-dom';
-import { stateSchema } from './stateSchema';
+import { ThunkExtraArg, stateSchema } from './stateSchema';
 import { createReducerManager } from './reducerManager';
 
 export function createReduxStore(
@@ -19,16 +19,19 @@ export function createReduxStore(
 
   const reducerManager = createReducerManager(rootReducer);
 
+  const extraArg: ThunkExtraArg = {
+    api: $api,
+    navigate,
+  };
+
   const store = configureStore({
-    reducer: reducerManager.reduce,
+    // @ts-ignore
+    reducer: reducerManager.reduce as ReducersMapObject<stateSchema>,
     preloadedState: initialState,
     devTools: __IS_DEV__,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
       thunk: {
-        extraArgument: {
-          api: $api,
-          navigate,
-        },
+        extraArgument: extraArg,
       },
     }),
   });
